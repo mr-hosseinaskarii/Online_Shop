@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/mr-hosseinaskarii/Online_Shop">
-    <img src="https://github.com/mr-hosseinaskarii/Online_Shop/blob/master/README/online-shop-high-resolution-logo-white.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/mr-hosseinaskarii/Online_Shop/blob/master/README/project%20logo/online-shop-high-resolution-logo-white-transparent.png" alt="Logo" width="180" height="80">
   </a>
 
   <h3 align="center">Django Online Shop</h3>
