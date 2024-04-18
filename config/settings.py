@@ -32,7 +32,7 @@ ALLOWED_HOSTS = (
 )
 
 
-APPLICATIONS = []
+APPLICATIONS = ["account", "order", "shop"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
