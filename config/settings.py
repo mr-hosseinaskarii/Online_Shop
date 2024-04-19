@@ -23,6 +23,8 @@ DEBUG = config("DEBUG", cast=bool, default=True)
 
 TIME_ZONE = config("TIME_ZONE", default="UTC")
 
+AUTH_USER_MODEL = 'account.CustomUser'
+
 ALLOWED_HOSTS = (
     ["*"]
     if DEBUG
