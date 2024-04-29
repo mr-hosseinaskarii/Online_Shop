@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    {% include 'base/components/head-references.html' %}
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body class="bg-grey">
+
+<div class="page-wrapper">
+    <h1 class="d-none">Django Online Shop</h1>
+
+    {% include 'base/components/header.html' %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include 'base/components/footer.html' %}
+
+</div>
+
+{% include 'base/components/sticky-footer.html' %}
+
+{% include 'base/components/scroll-top.html' %}
+
+{% include 'base/components/mobile-menu.html' %}
+
+{% include 'base/components/quick-view.html' %}
+
+{% include 'base/components/js-plugins.html' %}
+
+</body>
+
+</html>
