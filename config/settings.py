@@ -23,7 +23,9 @@ DEBUG = config("DEBUG", cast=bool, default=True)
 
 TIME_ZONE = config("TIME_ZONE", default="UTC")
 
-AUTH_USER_MODEL = 'account.CustomUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+SITE_ID = 3
 
 ALLOWED_HOSTS = (
     ["*"]
@@ -34,7 +36,7 @@ ALLOWED_HOSTS = (
 )
 
 
-APPLICATIONS = ["account", "order", "shop"]
+APPLICATIONS = ["accounts", "order", "shop"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -43,8 +45,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
 
     # third-party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
 
     # custom apps
     *list(map(lambda app: f"apps.{app}", APPLICATIONS))
@@ -58,6 +66,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 
@@ -93,6 +102,47 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+# Django Allauth config
+SOCIALACCOUNT_PROVIDERS = {
+    "github": {
+        "VERIFIED_EMAIL": True,
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    },
+    "google": {
+        "APPS": [
+            {
+                "client_id": config("GOOGLE_CLIENT_ID"),
+                "secret": config("GOOGLE_CLIENT_SECRET"),
+                "key": config("GOOGLE_CLIENT_KEY")
+            },
+        ],
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+        'FETCH_USERINFO': True
+    }
+}
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # Serving
 STATIC_URL = "static/"
