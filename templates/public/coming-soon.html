@@ -31,12 +31,12 @@
     </script>
 
     <link rel="preload" href="{% static 'vendor/fontawesome-free/webfonts/fa-regular-400.woff2' %}" as="font" type="font/woff2"
-        crossorigin="anonymous">
+          crossorigin="anonymous">
     <link rel="preload" href="{% static 'vendor/fontawesome-free/webfonts/fa-solid-900.woff2' %}" as="font" type="font/woff2"
-        crossorigin="anonymous">
+          crossorigin="anonymous">
     <link rel="preload" href="{% static 'vendor/fontawesome-free/webfonts/fa-brands-400.woff2' %}" as="font" type="font/woff2"
-            crossorigin="anonymous">
-    <link rel="preload" href="{% static 'fonts/wolmart87d5.woff?png09e' %}" as="font" type="font/woff" crossorigin="anonymous">
+          crossorigin="anonymous">
+    <link rel="preload" href="{% static 'fonts/wolmart87d5.woff' %}" as="font" type="font/woff" crossorigin="anonymous">
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
@@ -51,7 +51,7 @@
         <main class="main">
             <div class="page-content">
                 <div class="banner coming-soon-bg"
-                    style="background-image: url(../../../www.portotheme.com/html/wolmart/assets/images/pages/coming/coming-soon.html); background-color: #333;">
+                    style="background-image: url({% static 'images/pages/coming/coming-soon.html' %}); background-color: #333;">
                     <div class="coming-content-wrapper d-flex align-items-center justify-content-end pl-sm-4 pr-sm-4">
                         <div class="coming-content">
                             <a href="demo1.html" class="logo">
