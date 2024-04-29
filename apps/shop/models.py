@@ -42,9 +42,15 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    first_image = models.ImageField(upload_to='products/', null=True, blank=True)  # image must be 300 * 337
+    second_image = models.ImageField(upload_to='products/', null=True, blank=True)
+
     @property
     def discounted_price(self):
         discount_amount = min(self.price, self.max_discount_amount)
         discounted_price = self.price - discount_amount
         discounted_price -= discounted_price * (self.discount / 100)
         return discounted_price
+
+    def __str__(self):
+        return self.name

@@ -5,6 +5,16 @@ from django.utils.translation import gettext_lazy as _
 from .managers import CustomUserManager
 
 
+class Opt(models.Model):
+    user = models.OneToOneField("CustomUser", on_delete=models.CASCADE, related_name="opt")
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    expired_at = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.code
+
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email_validator = RegexValidator(r'^[\w\.-]+@[\w\.-]+\.\w+$', 'Enter a valid email address')
     phone_validator = RegexValidator(r'^\+98(90|91|92|93|99)\d{8}$', 'Enter a valid phone number')
@@ -25,8 +35,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50, null=True)
     gender = models.CharField(max_length=6, null=True, blank=True)
     is_verified = models.BooleanField(_("active"), default=False)
-    opt_code = models.CharField(max_length=6, blank=True, null=True)
-    opt_expiry = models.DateTimeField(blank=True, null=True)
 
     # access level
     is_admin = models.BooleanField(default=False)

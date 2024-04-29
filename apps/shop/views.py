@@ -4,4 +4,4 @@ from apps.shop.models import Product
 
 class IndexView(generic.ListView):
     model = Product
-    template_name = 'public/index.html'
+    template_name = 'shop/index.html'

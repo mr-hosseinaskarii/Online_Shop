@@ -10,6 +10,7 @@ handler500 = Error500View.as_view()
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("public.urls")),
+    path("", include("apps.shop.urls")),
     path("auth/", include("apps.accounts.urls")),
     path("accounts/", include("allauth.urls")),
 ]

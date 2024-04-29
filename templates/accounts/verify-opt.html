@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block title %} Verify Opt {% endblock title %}
+
+{% block content %}
+        <!-- Start of Main -->
+        <main class="main login-page">
+            <!-- Start of Page Header -->
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title mb-0">Verify Opt</h1>
+                </div>
+            </div>
+            <!-- End of Page Header -->
+
+            <!-- Start of Breadcrumb -->
+            <nav class="breadcrumb-nav">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="demo1.html">Home</a></li>
+                        <li>Verify Opt</li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End of Breadcrumb -->
+            <div class="page-content">
+                <div class="container">
+                    <div class="login-popup">
+                        <div class="tab tab-nav-boxed tab-nav-center tab-nav-underline">
+                            <ul class="nav nav-tabs text-uppercase" role="tablist">
+                                <li class="nav-item">
+                                    <a href="#sign-in" class="nav-link active">Verify</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="sign-in">
+                                    <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="opt">Your Opt Code*</label>
+                                        <input type="text" class="form-control" name="opt" id="opt" required>
+                                    </div>
+                                    <input type="submit" value="Verify" class="btn btn-primary">
+                                    </form>
+                                </div>
+                            </div>
+                            <p class="text-center">Sign in with social account</p>
+                            <div class="social-icons social-icon-border-color d-flex justify-content-center">
+                                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
+                                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
+{#                                <a href="{% provider_login_url 'google' %}?next=/" class="social-icon social-google fab fa-google"></a>#}
+                                <a href="{% provider_login_url 'github' method='oauth2' %}" class="social-icon social-github fab fa-github"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- End of Main -->
+{% endblock content %}

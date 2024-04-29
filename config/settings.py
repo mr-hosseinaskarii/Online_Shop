@@ -103,6 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
+    "apps.accounts.backends.EmailBackend",
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
@@ -168,12 +169,14 @@ if DEBUG:
         }
     }
 
-    EMAIL_USE_TLS = False
-    EMAIL_HOST = "localhost"
-    EMAIL_PORT = 25
-    EMAIL_HOST_USER = ""
-    EMAIL_HOST_PASSWORD = ""
-    DEFAULT_FROM_EMAIL = "noreply@maktab105.dev"
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = "0djangoonlineshop0@gmail.com"
+    # EMAIL_HOST_PASSWORD = "1h+7L$<d1H49"  # Gmail Password
+    EMAIL_HOST_PASSWORD = "tmvhfhllyqztbhex"
 
 else:
     REDIS_URL = f"redis://{config('REDIS_HOST')}:{config('REDIS_PORT')}"
