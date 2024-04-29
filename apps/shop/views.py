@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views import generic
+from apps.shop.models import Product
 
-# Create your views here.
+
+class IndexView(generic.ListView):
+    model = Product
+    template_name = 'public/index.html'

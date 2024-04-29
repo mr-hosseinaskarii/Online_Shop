@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.utils import timezone
 from .models import OrderItem, Order, STATUS_CHOICE
 from apps.shop.models import Product
-from apps.account.models import CustomUser
+from apps.accounts.models import CustomUser
 
 
 class OrderItemModelTestCase(TestCase):

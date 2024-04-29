@@ -1,6 +1,6 @@
 from django.db import models
 from apps.shop.models import Product
-from apps.account.models import CustomUser
+from apps.accounts.models import CustomUser
 
 
 class OrderItem(models.Model):

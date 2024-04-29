@@ -33,7 +33,7 @@ class Product(models.Model):
     )
     max_discount_amount = models.IntegerField(
         default=0,
-        validators=[MinValueValidator(0)]
+        validators=[MaxValueValidator(0)]
     )
     min_discount_amount = models.IntegerField(
         default=0,
