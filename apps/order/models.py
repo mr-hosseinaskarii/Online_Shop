@@ -45,8 +45,8 @@ class Order(models.Model):
 
 class Discount(models.Model):
     code = models.CharField(max_length=50, unique=True)
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    order = models.ForeignKey('Order', on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='discount')
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='discount')
     discount_percentage = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(0)])
     max_discount_amount = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
 
