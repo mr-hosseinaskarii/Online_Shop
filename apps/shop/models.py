@@ -52,5 +52,11 @@ class Product(models.Model):
         discounted_price -= discounted_price * (self.discount / 100)
         return discounted_price
 
+    class Meta:
+        ordering = ('-created_at', )
+
+    # def get_absolute_url(self):
+    #     return reverse("shop:product_detail", kwargs={'id': self.id})
+
     def __str__(self):
         return self.name
